@@ -1,32 +1,24 @@
-import React, { useState } from "react";
-import './App.css';
-import Button from "./components/Button";
+import React from 'react';
+import Home from './components/Home';
+import Login from './components/Login';
+import Signup from './components/Signup';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
-function App() {
-  const [counter, setCount] = useState(0);
-  let increasebutton = () => {
-    setCount(counter + 1);
-  }
-  let decreasebutton = () => {
-    setCount(counter - 1);
-  }
-  let resetbutton = () => {
-    setCount(0);
-  }
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Counter</h1>
-        <h3>{counter}</h3>
-        <Button title={"decrease"} action={decreasebutton} />
-        <Button title={"increase"} action={increasebutton} />
-        <Button title={"reset"} action={resetbutton} />
+    <>
+      <Router>
+        <Routes>
+          <Route exact path='/' element={<Home />} />
+          <Route path='/signup' element={<Signup />} />
+          <Route path='/login' element={<Login />} />
 
-      </header>
-    </div>
+        </Routes>
+      </Router>
+    </>
+
+
   )
-
 }
 
-
-export default App;
+export default App
